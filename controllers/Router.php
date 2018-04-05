@@ -24,7 +24,7 @@ class Router{
           require_once($controllerFile);
           $this->_ctrl = new $controllerClass($url);
         }else{
-          throw new Exeption('Page introuvable');
+          throw new Exception('Page introuvable');
         }
       }else{
           require_once('controllers/ControllerAccueil.php');
@@ -32,7 +32,7 @@ class Router{
         }
       }
       //gestion erreurs
-      catch(Exeption $e){
+      catch(Exception $e){
       $errorMsg = $e->getMessage();
       require_once('views/viewError.php');
     }

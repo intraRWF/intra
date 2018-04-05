@@ -1,3 +1,2 @@
-<?php
-echo $errorMsg
+<?= $errorMsg
  ?>
