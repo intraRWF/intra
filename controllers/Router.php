@@ -7,7 +7,7 @@ class Router{
     try{
       //chargement auto class
       spl_autoload_register(function($class){
-        require_once('models/'.$class'.php');
+        require_once('models/'.$class.'.php');
       });
 
       $url ='';
@@ -18,20 +18,21 @@ class Router{
 
         $controller = ucfirst(strtolower($url[0]));
         $controllerClass = "controller".$controller;
-        $controllerFile = "controllers/".controllerClass'.php';
+        $controllerFile = "controllers/".$controllerClass.".php";
 
         if(file_exists($controllerFile)){
           require_once($controllerFile);
           $this->_ctrl = new $controllerClass($url);
         }else{
           throw new Exeption('Page introuvable');
-        }else{
+        }
+      }else{
           require_once('controllers/ControllerAccueil.php');
-          this->_ctrl = new ControllerAccueil($url);
+          $this->_ctrl = new ControllerAccueil($url);
         }
       }
       //gestion erreurs
-    }catch(Exeption $e){
+      catch(Exeption $e){
       $errorMsg = $e->getMessage();
       require_once('views/viewError.php');
     }
