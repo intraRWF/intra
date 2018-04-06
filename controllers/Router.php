@@ -1,4 +1,6 @@
 <?php
+require_once('views/View.php');
+
 class Router{
   private $_ctrl;
   private $_view;
@@ -34,7 +36,9 @@ class Router{
       //gestion erreurs
       catch(Exception $e){
       $errorMsg = $e->getMessage();
-      require_once('views/viewError.php');
+      //require_once('views/viewError.php');
+      $this->_view =new View('Error');
+      $this->_view->generate(array('errorMsg' => $errorMsg));
     }
   }
 }
