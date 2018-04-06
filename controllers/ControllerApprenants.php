@@ -1,19 +1,19 @@
 <?php
 require_once('views/View.php');
 
-class ControllerAccueil{
-  private $_articleManager;
+class ControllerApprenants{
+  private $_apprenantManager;
   private $_view;
 
   public function __construct($url){
     if(isset($url)&& count($url) > 1)
     throw new Exeption('Page introuvable');
     else {
-      $this->articles();
+      $this->apprenants();
     }
   }
-  private function articles(){
-      $this->_articleManager = new ArticleManager;
+  private function apprenants(){
+      $this->_apprenantManager = new ArticleManager;
       $articles = $this->_articleManager->getArticles();
       //require_once('views/viewAccueil.php');
       $this->_view = new View('Accueil');
