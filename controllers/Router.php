@@ -11,7 +11,7 @@ class Router{
       });
 
       $url ='';
-      // controller inclus celon action user
+      // controller inclus selon action user
       if(isset($_GET['url'])){
         $url = explode('/', filter_var($_GET['url'],
         FILTER_SANITIZE_URL));
